@@ -6,7 +6,22 @@ import "./Comment.css";
 
 const CommentSection = props => {
   // Add state for the comments
-  const [comments] = useState(props.comments);
+  const [comments, setComments] = useState(props.comments);
+  const [comment, setComment] = useState({text: "", username: "You"});
+
+  function changeComment(message){
+    setComment({
+      ...comment,
+      text: message
+    });
+  }
+
+  function submitComment(e){
+    e.preventDefault();
+    setComments(comments.concat(comment));
+    setComment({...comment, text: ""});
+  }
+
   return (
     <div>
       {comments.map(comment => {
@@ -14,7 +29,7 @@ const CommentSection = props => {
           <Comment comment={comment}/>
         );
       })}
-      <CommentInput />
+      <CommentInput comment={comment.text} changeComment={changeComment} submitComment={submitComment}/>
     </div>
   );
 };
