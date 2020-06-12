@@ -12,8 +12,8 @@ const LikeSection = props => {
         className="like-section"
         key="likes-icons-container"
       >
-        <div className="like-section-wrapper">
-          <FontAwesomeIcon icon={faHeart} />
+        <div className={"like-section-wrapper" + (props.isLiked? " liked": "")}>
+          <FontAwesomeIcon onClick={props.likeToggle} icon={faHeart} />
         </div>
         <div className="like-section-wrapper">
           <FontAwesomeIcon icon={faComment} />
