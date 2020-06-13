@@ -3,15 +3,11 @@
 import React, {useState} from "react";
 import Post from "./Post";
 import "./Posts.css";
-// import data 
-import postsData from "../../dummy-data";
 
-const PostsPage = () => {
-  // set up state for your data
-  const [posts, setPosts] = useState(postsData);
+const PostsPage = (props) => {
   return (
     <div className="posts-container-wrapper">
-      {posts.map(post=>{
+      {props.posts.map(post=>{
         return(
           <Post post={post}/>
         )
