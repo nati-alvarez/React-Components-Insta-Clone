@@ -19,7 +19,7 @@ const App = () => {
   function search(e){
     e.preventDefault();
     const query = document.querySelector(".search-form input").value;
-    setPosts(data.filter(post=> post.username === query));
+    setPosts(data.filter(post=> post.username.search(query) > -1));
   }
 
   return (
